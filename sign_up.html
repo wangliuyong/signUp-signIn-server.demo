@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <title>注册</title>
+</head>
+<body>
+    <form action="#" method="post" id="myForm">
+        <div class="row"><label for="">邮箱：</label><input type="text" name="email"></div>
+        <div class="row"><label for="">密码：</label><input type="password" name="password"></div>
+        <div class="row"><label for="">确认密码：</label><input type="password" name="password_confirm"></div>
+        <div class="row"><input type="submit" name="submit"></div>
+    </form>
+    <script>
+        $form=$('#myForm');
+        $form.on('submit',(e)=>{
+            e.preventDefault();
+            let hash={};
+            let need=['email','password','password_confirm']
+            
+            need.forEach((key)=>{
+                let value=$form.find(`input[name=${key}]`).val();
+                hash[key]=value;
+            });
+
+
+            $.post('./sign_up',hash).then(()=>{
+                document.write('注册成功，请登录');
+                window.location="./sign_in.html";
+            },()=>{
+                console.log('false');
+            });
+
+        });
+    </script>
+</body>
+</html>

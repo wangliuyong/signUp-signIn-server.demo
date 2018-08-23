@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <title>主页</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;}
+        header{
+            background: #aaa;
+            padding: 10px 6px;
+        }
+        #sign_up,#sign_in{
+            background: #ccc;
+            padding: 4px 6px;
+            margin-left: 20px;
+        }
+       section.content{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           min-height: 300px;
+       }
+    </style>
+</head>
+<body>
+    <header>
+        <span id="sign_up">注册</span>
+        <span id="sign_in">登录</span>
+    </header>
+    <section class="content">
+        <h2 id='wellocom'>Wellocom $dataText</h2>
+    </section>
+    <script>
+        $('#sign_up').on('click',()=>{
+            $.get('./sign_up.html').
+                then((request)=>{window.location='./sign_up.html'},()=>{console.log('false')})
+            
+        });
+        $('#sign_in').on('click',()=>{
+            $.get('./sign_in.html').
+            then((request)=>{window.location='./sign_in.html'},()=>{console.log('false')})
+        });
+    </script>
+</body>
+</html>
